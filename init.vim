@@ -67,7 +67,10 @@ local lspconfig=require("lspconfig")
 -- Servers
 -- Javascript
 lspconfig.ts_ls.setup{}
+-- Go
 lspconfig.gopls.setup{}
+-- Python
+lspconfig.pyright.setup{}
 -- Bash
 lspconfig.bashls.setup{}
 -- Eslint
