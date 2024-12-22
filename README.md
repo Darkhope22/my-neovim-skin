@@ -7,6 +7,7 @@
 - gopls
 - @astrojs/language-server
 - @tailwindcss/language-server
+- pyright
 
 > Instalar usando npm
 
