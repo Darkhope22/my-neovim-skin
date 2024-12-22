@@ -3,9 +3,9 @@ set number
 set encoding=utf-8
 set filetype=on
 set mouse=a
-set cursorline
-set cursorcolumn
-set colorcolumn=80
+" set cursorline
+" set cursorcolumn
+" set colorcolumn=80
 syntax on
 set nobackup
 set showcmd
@@ -133,10 +133,15 @@ vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
 
 -- Mapeos básicos estilo VS Code
+-- Modo normal
 vim.keymap.set('n', '<C-c>', '"+y')  -- Copiar al portapapeles
 vim.keymap.set('n', '<C-x>', '"+d')  -- Cortar al portapapeles
 vim.keymap.set('n', '<C-v>', '"+p')  -- Pegar desde el portapapeles
 vim.keymap.set('n', '<C-a>', 'ggVG') -- Seleccionar todo
+-- Modo visual
+vim.keymap.set('v', '<C-c>', '"+y')
+vim.keymap.set('v', '<C-x>', '"+d')
+vim.keymap.set('v', '<C-v>', '"+p')
 
 -- Autocompletado básico con `ctrl + space`
 vim.api.nvim_set_keymap('i', '<C-Space>', 'coc#refresh()', { noremap = true, silent = true, expr = true })
@@ -158,5 +163,27 @@ vim.cmd([[
 
 -- Usa `:Format` para formatear el buffer
 vim.cmd([[command! -nargs=0 Format :call CocAction('format')]])
+
+-- Mapeo de flechas principales con Shift para selección
+vim.api.nvim_set_keymap('n', '<S-Up>', 'v<Up>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Down>', 'v<Down>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Left>', 'v<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Right>', 'v<Right>', { noremap = true, silent = true })
+
+-- Mapeo de flechas del teclado numérico con Shift para selección
+vim.api.nvim_set_keymap('n', '<S-kUp>', 'v<Up>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-kDown>', 'v<Down>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-kLeft>', 'v<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-kRight>', 'v<Right>', { noremap = true, silent = true })
+
+-- Modo visual: seguir expandiendo selección con Shift y flechas
+vim.api.nvim_set_keymap('v', '<S-Up>', '<Up>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<S-Down>', '<Down>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<S-Left>', '<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<S-Right>', '<Right>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<S-kUp>', '<Up>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<S-kDown>', '<Down>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<S-kLeft>', '<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<S-kRight>', '<Right>', { noremap = true, silent = true })
 
 EOF
