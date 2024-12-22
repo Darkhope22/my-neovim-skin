@@ -22,13 +22,14 @@ au BufNewFile,BufRead *.ejs set filetype=html
 
 let mapleader = ","
 let NERDTreeShowHidden=1
+set noshowmode
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-" Plug 'ayu-theme/ayu-vim'
-Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
+Plug 'EdenEast/nightfox.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'projekt0n/github-nvim-theme'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'itchyny/lightline.vim'
@@ -39,23 +40,37 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
-Plug 'tpope/vim-dadbod'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 call plug#end()
-"let ayucolor="dark"
-" colorscheme ayu
 
-" Lightline & moonfly
-let g:lightline = { 'colorscheme' : 'moonfly' }
-colorscheme moonfly
+" Editor Theme
+colorscheme carbonfox
+
+" Lightline Theme
+let g:lightline = {
+      \'colorscheme': 'ayu_dark',
+      \ }
+
+" Diffview commands
+nnoremap <leader>dv :DiffviewOpen<CR> 
+nnoremap <leader>dc :DiffviewClose<CR>
+nnoremap <leader>db :DiffviewToggleFiles<CR>
 
 lua<<EOF
+
+-- LSP
+-- Init
 local lspconfig=require("lspconfig")
 
-lspconfig.ts_ls.setup{} -- javascript
--- lspconfig.bashls.setup{} -- bash
+-- Servers
+-- Javascript
+lspconfig.ts_ls.setup{}
+lspconfig.gopls.setup{}
+-- Bash
+lspconfig.bashls.setup{}
+-- Eslint
 lspconfig.eslint.setup{
   function(client, bufnr)
       vim.api.nvim_create_autocmd("BufWritePre", {
@@ -63,7 +78,27 @@ lspconfig.eslint.setup{
             command = "EslintFixAll",
           })
       end,
-  } -- eslint
+  }
+-- Tailwindcss
+lspconfig.tailwindcss.setup({
+  cmd = { "tailwindcss-language-server", "--stdio" },
+  filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+})
+-- Astrojs
+lspconfig.astro.setup{}
+
+-- Diffview
+require("diffview").setup({
+  use_icons = false,
+  view = {
+    merge_tool = {
+      layout = "diff3_vertical",
+    },
+    default = {
+      layout = "diff2_vertical"
+    }
+  }
+})
 
 -- Autoclose
 require("autoclose").setup()
@@ -77,14 +112,12 @@ require'FTerm'.setup({
 -- gitsigns
 require('gitsigns').setup()
 
+-- Atajos personalizados
 vim.keymap.set('n', '<C-p>', '<CMD>lua require("FTerm").toggle()<CR>')
-
 vim.keymap.set('t', '<C-t>', '<C-\\><C-t><CMD>lua require("FTerm").toggle()<CR>')
 
 -- NERDTREE
 vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
-
--- Configuración mínima para Neovim
 
 -- Desactivar backups para evitar conflictos
 vim.opt.backup = false
