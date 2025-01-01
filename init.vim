@@ -43,6 +43,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
 call plug#end()
 
 " Editor Theme
@@ -57,6 +60,15 @@ let g:lightline = {
 nnoremap <leader>dv :DiffviewOpen<CR> 
 nnoremap <leader>dc :DiffviewClose<CR>
 nnoremap <leader>db :DiffviewToggleFiles<CR>
+
+" Configuración para vim-dadbod-ui
+let g:db_ui_save_location = '~/.config/nvim/db_ui'
+
+" Mapas útiles para abrir la interfaz
+nnoremap <leader>du :DBUIToggle<CR>
+nnoremap <leader>df :DBUIFindBuffer<CR>
+nnoremap <leader>dr :DBUIRenameBuffer<CR>
+nnoremap <leader>dl :DBUILastQueryInfo<CR>
 
 lua<<EOF
 
