@@ -46,6 +46,7 @@ Plug 'sindrets/diffview.nvim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
+
 call plug#end()
 
 " Editor Theme
@@ -80,7 +81,7 @@ local lspconfig=require("lspconfig")
 -- Javascript
 lspconfig.ts_ls.setup{}
 -- Go
-lspconfig.gopls.setup{}
+-- lspconfig.gopls.setup{}
 -- Python
 lspconfig.pyright.setup{}
 -- Bash
@@ -102,6 +103,9 @@ lspconfig.tailwindcss.setup({
 -- Astrojs
 lspconfig.astro.setup{}
 
+-- PHP
+lspconfig.intelephense.setup{}
+
 -- Diffview
 require("diffview").setup({
   use_icons = false,
@@ -111,7 +115,7 @@ require("diffview").setup({
     },
     default = {
       layout = "diff2_vertical"
-    }
+   }
   }
 })
 
