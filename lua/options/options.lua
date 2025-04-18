@@ -37,3 +37,5 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 
 opt.updatetime = 300
 opt.signcolumn = "yes"
+
+vim.opt.clipboard = 'unnamedplus'
