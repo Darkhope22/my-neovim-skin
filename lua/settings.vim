@@ -22,4 +22,5 @@ au BufNewFile,BufRead *.ejs set filetype=html
 
 let mapleader = ","
 let NERDTreeShowHidden=1
+let g:NERDTreeWinPos = "right"
 set noshowmode

@@ -1,5 +1,5 @@
 " Editor Theme
-colorscheme carbonfox
+colorscheme aura-dark
 
 " Lightline Theme
 let g:lightline = { 'colorscheme': 'ayu_dark' }
