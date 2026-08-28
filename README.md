@@ -4,10 +4,12 @@ Este proyecto tiene la finalidad de compartir una personalización facil y rápi
 
 ## Algunas sugerencias
 
+
 La recomendación es tener instalado como mínimo, los entornos de ejecución de python y javascript
 para un uso inicial. Aunque siempre puedes instalar los interpretes/compiladores que necesites.
 
 ### Guía de uso
+
 
 Para hacer uso de esta personalización, se requiere que cuentes con git y Neovim instalados y actualizado a
 la versión más reciente.
@@ -21,7 +23,7 @@ Una vez descargado, puedes copiar o mover los archivos de personalización a la 
 de tu sistema operativo, abrir el fichero init.vim y ejecutar el comando 
 
 ```lua
-    :PlugInstall
+:PlugInstall
 ```
 
 Con esto, las configuraciones base y sus recursos serán descargados y estarán listos para usar.
